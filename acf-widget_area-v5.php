@@ -1,6 +1,6 @@
 <?php
 
-class acf_field_FIELD_NAME extends acf_field {
+class acf_field_widget_area extends acf_field {
 	
 	
 	/*
@@ -22,14 +22,14 @@ class acf_field_FIELD_NAME extends acf_field {
 		*  name (string) Single word, no spaces. Underscores allowed
 		*/
 		
-		$this->name = 'FIELD_NAME';
+		$this->name = 'widget_area';
 		
 		
 		/*
 		*  label (string) Multiple words, can include spaces, visible when selecting a field type
 		*/
 		
-		$this->label = __('FIELD_LABEL', 'acf-FIELD_NAME');
+		$this->label = __('Widget Area', 'acf-widget_area');
 		
 		
 		/*
@@ -50,11 +50,11 @@ class acf_field_FIELD_NAME extends acf_field {
 		
 		/*
 		*  l10n (array) Array of strings that are used in JavaScript. This allows JS strings to be translated in PHP and loaded via:
-		*  var message = acf._e('FIELD_NAME', 'error');
+		*  var message = acf._e('widget_area', 'error');
 		*/
 		
 		$this->l10n = array(
-			'error'	=> __('Error! Please enter a higher value', 'acf-FIELD_NAME'),
+			'error'	=> __('Error! Please enter a higher value', 'acf-widget_area'),
 		);
 		
 				
@@ -90,8 +90,8 @@ class acf_field_FIELD_NAME extends acf_field {
 		*/
 		
 		acf_render_field_setting( $field, array(
-			'label'			=> __('Font Size','acf-FIELD_NAME'),
-			'instructions'	=> __('Customise the input font size','acf-FIELD_NAME'),
+			'label'			=> __('Font Size','acf-widget_area'),
+			'instructions'	=> __('Customise the input font size','acf-widget_area'),
 			'type'			=> 'number',
 			'name'			=> 'font_size',
 			'prepend'		=> 'px',
@@ -161,13 +161,13 @@ class acf_field_FIELD_NAME extends acf_field {
 		
 		
 		// register & include JS
-		wp_register_script( 'acf-input-FIELD_NAME', "{$dir}js/input.js" );
-		wp_enqueue_script('acf-input-FIELD_NAME');
+		wp_register_script( 'acf-input-widget_area', "{$dir}js/input.js" );
+		wp_enqueue_script('acf-input-widget_area');
 		
 		
 		// register & include CSS
-		wp_register_style( 'acf-input-FIELD_NAME', "{$dir}css/input.css" ); 
-		wp_enqueue_style('acf-input-FIELD_NAME');
+		wp_register_style( 'acf-input-widget_area', "{$dir}css/input.css" ); 
+		wp_enqueue_style('acf-input-widget_area');
 		
 		
 	}
@@ -427,7 +427,7 @@ class acf_field_FIELD_NAME extends acf_field {
 		// Advanced usage
 		if( $value < $field['custom_minimum_setting'] )
 		{
-			$valid = __('The value is too little!','acf-FIELD_NAME'),
+			$valid = __('The value is too little!','acf-widget_area'),
 		}
 		
 		
@@ -539,8 +539,5 @@ class acf_field_FIELD_NAME extends acf_field {
 	
 }
 
-
 // create field
-new acf_field_FIELD_NAME();
-
-?>
+new acf_field_widget_area();
