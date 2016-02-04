@@ -87,6 +87,7 @@ class ACF_Widget_Area_Sidebar {
 	public function display_callback( $args, $widget_args = array() ) {
 		$widget_args = wp_parse_args( $widget_args, array('widget' => null, 'instance' => null) );
 		$widget = $widget_args['widget'];
+		$widget->id = $args['widget_id'];
 		
 		/**
 		 * Filter the settings for a particular widget instance.
