@@ -327,7 +327,7 @@ if ( !class_exists( 'acf_field_widget_area' ) ) :
 
 				<ul class="acf-hl">
 					<li class="acf-fr">
-						<a href="#" class="acf-button blue" data-event="add-layout"><?php echo $field['button_label']; ?></a>
+						<a href="#" class="acf-button blue" data-event="add-widget"><?php echo $field['button_label']; ?></a>
 					</li>
 				</ul>
 
@@ -428,13 +428,13 @@ if ( !class_exists( 'acf_field_widget_area' ) ) :
 
 				<ul class="acf-wa-layout-controlls acf-hl">
 					<li class="acf-wa-show-on-hover">
-						<a class="acf-icon -plus small" href="#" data-event="add-layout" title="<?php _e( 'Add layout', 'acf' ); ?>"></a>
+						<a class="acf-icon -plus small" href="#" data-event="add-widget" title="<?php _e( 'Add layout', 'acf' ); ?>"></a>
 					</li>
 					<li class="acf-wa-show-on-hover">
-						<a class="acf-icon -minus small" href="#" data-event="remove-layout" title="<?php _e( 'Remove layout', 'acf' ); ?>"></a>
+						<a class="acf-icon -minus small" href="#" data-event="remove-widget" title="<?php _e( 'Remove layout', 'acf' ); ?>"></a>
 					</li>
 					<li>
-						<a class="acf-icon -collapse small" href="#" data-event="collapse-layout" title="<?php _e( 'Click to toggle', 'acf' ); ?>"></a>
+						<a class="acf-icon -collapse small" href="#" data-event="collapse-widget" title="<?php _e( 'Click to toggle', 'acf' ); ?>"></a>
 					</li>
 				</ul>
 

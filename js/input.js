@@ -12,9 +12,9 @@
 			'show': 'show'
 		},
 		events: {
-			'click [data-event="add-layout"]': '_open',
-			'click [data-event="remove-layout"]': '_remove',
-			'click [data-event="collapse-layout"]': '_collapse',
+			'click [data-event="add-widget"]': '_open',
+			'click [data-event="remove-widget"]': '_remove',
+			'click [data-event="collapse-widget"]': '_collapse',
 			'click .acf-wa-layout-handle': '_collapse',
 			'click .acf-wa-popup a': '_add',
 			'blur .acf-wa-popup .focus': '_close',
@@ -348,7 +348,9 @@
 
 		},
 		_open: function (e) { //console.log('_open');
-
+			e.preventDefault();
+			e.stopPropagation();
+			
 			// reference
 			var $values = this.$values;
 

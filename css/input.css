@@ -23,6 +23,11 @@
   background: #fff;
   border: 1px solid #e1e1e1;
 }
+
+.acf-widget-area .layout .acf-fields {
+	background-color:#F9F9F9;
+}
+
 .acf-widget-area .layout:first-child {
   margin-top: 0;
 }
