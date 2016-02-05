@@ -130,7 +130,7 @@ if ( !class_exists( 'acf_field_widget_area' ) ) :
 
 				$field['layouts'][] = array(
 				    'key' => md5( $class ),
-				    'name' => 'layout_' . $widget_obj->id,
+				    'name' => 'layout_' . $widget_obj->id_base,
 				    'label' => $widget_obj->name,
 				    'display' => 'block',
 				);
