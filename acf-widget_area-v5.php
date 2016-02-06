@@ -380,30 +380,9 @@ if ( !class_exists( 'acf_field_widget_area' ) ) :
 			);
 
 
-			// collapsed
-			$collapsed = acf_get_user_setting( 'collapsed_' . $field['key'], '' );
-
-
-			// cookie fallback ( version < 5.3.2 )
-			if ( $collapsed === '' ) {
-
-				$collapsed = acf_extract_var( $_COOKIE, "acf_collapsed_{$field['key']}", '' );
-				$collapsed = str_replace( '|', ',', $collapsed );
-
-				acf_update_user_setting( 'collapsed_' . $field['key'], $collapsed );
-			}
-
-
-			// explode
-			$collapsed = explode( ',', $collapsed );
-			$collapsed = array_filter( $collapsed, 'is_numeric' );
-
-
-			// collapsed class
-			if ( in_array( $i, $collapsed ) ) {
-
-				$div['class'] .= ' -collapsed';
-			}
+			//Collapse by default. 
+			$div['class'] .= ' -collapsed';
+			
 
 
 			// clone
