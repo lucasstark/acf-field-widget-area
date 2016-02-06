@@ -1,23 +1,23 @@
 === Advanced Custom Fields: Widget Area Field ===
-Contributors: AUTHOR_NAME
-Tags: PLUGIN_TAGS
+Contributors: Lucas tark
 Requires at least: 3.5
-Tested up to: 3.8.1
+Tested up to: 4.4.2
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-SHORT_DESCRIPTION
+Creates a Widget Area field type that allows you to configure widgets inside of an ACF Field.  
+
+You can either override an existing sidebar or use the_widget_area_field($selector), or the_widget_area_subfield($selector) to manually render out the widgets. 
 
 == Description ==
 
-EXTENDED_DESCRIPTION
+
 
 = Compatibility =
 
 This ACF field type is compatible with:
 * ACF 5
-* ACF 4
 
 == Installation ==
 
