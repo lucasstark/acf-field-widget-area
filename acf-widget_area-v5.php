@@ -327,7 +327,7 @@ if ( !class_exists( 'acf_field_widget_area' ) ) :
 
 				<ul class="acf-hl">
 					<li class="acf-fr">
-						<a href="#" class="acf-button blue" data-event="add-widget"><?php echo $field['button_label']; ?></a>
+						<a href="#" class="acf-button blue button button-primary" data-event="add-widget"><?php echo $field['button_label']; ?></a>
 					</li>
 				</ul>
 
