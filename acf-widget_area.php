@@ -3,7 +3,7 @@
 /*
   Plugin Name: Advanced Custom Fields: Widget Area
   Plugin URI: https://github.com/lucasstark/acf-field-widget-area
-  Description: A field type which allows users to add widgets to a sidebar on posts and pages.  The widgets added will override the default sidebar.  
+  Description: A field type which allows users to add widgets to a sidebar on posts and pages.  The widgets added will override the default sidebar.
   Version: 1.0.0
   Author: Lucas Stark
   Author URI: https://github.com/lucasstark/
@@ -23,7 +23,6 @@ function include_field_types_widget_area( $version ) {
 }
 
 add_action( 'acf/include_field_types', 'include_field_types_widget_area' );
-
 
 class ACF_Widget_Area_Sidebar {
 
@@ -55,23 +54,38 @@ class ACF_Widget_Area_Sidebar {
 				foreach ( array_keys( $widgets ) as $sidebar_id ) {
 					if ( isset( $customized_sidebars[$sidebar_id] ) ) {
 						foreach ( $customized_sidebars[$sidebar_id] as $field_key => $customized ) {
+							$post_id = false;
 							if ( $customized == 'yes' ) {
+								$post_id = $object_id;
+							} elseif ( $customized == 'inherit' ) {
+								$cp = get_post( $object_id );
+								while ( $cp && $cp->post_parent !== 0 ) :
+									$cp = get_post( $cp->post_parent );
+									$parent_sidebars = get_post_meta( $cp->ID, 'acf_widget_area_is_customized', true );
+									if ( $parent_sidebars && isset( $parent_sidebars[$sidebar_id] ) && $parent_sidebars[$sidebar_id][$field_key] == 'yes' ):
+										$post_id = $cp->ID;
+										break;
+									endif;
+								endwhile;
+							}
+
+							if ( $post_id ) {
 								$widgets[$sidebar_id] = array();
-								$value = get_field( $field_key );
-								$field = get_field_object($field_key);
-								
+								$value = get_field( $field_key, $post_id );
+								$field = get_field_object( $field_key );
+
 								if ( $value && isset( $value['rows'] ) ) {
 									foreach ( $value['rows'] as $layout_row ) {
 										$the_widget_id = array_values( $layout_row )[1]['widget_id'];
 										$the_widget_class = array_values( $layout_row )[1]['the_widget'];
 										$instance = array_values( $layout_row )[1]['instance'];
-										
+
 										$this->_page_widgets[$object_id] = $layout_row;
-										
+
 										if ( !empty( $wp_widget_factory->widgets[$the_widget_class] ) ) {
 											$widget = $wp_widget_factory->widgets[$the_widget_class];
 											$widgets[$sidebar_id][] = $the_widget_id;
-											wp_register_sidebar_widget( $the_widget_id , $widget->name, array($this, 'display_callback'), $widget->widget_options, array('instance' => $instance, 'widget' => $widget) );
+											wp_register_sidebar_widget( $the_widget_id, $widget->name, array($this, 'display_callback'), $widget->widget_options, array('instance' => $instance, 'widget' => $widget) );
 										}
 									}
 								}
@@ -88,7 +102,7 @@ class ACF_Widget_Area_Sidebar {
 		$widget_args = wp_parse_args( $widget_args, array('widget' => null, 'instance' => null) );
 		$widget = $widget_args['widget'];
 		$widget->id = $args['widget_id'];
-		
+
 		/**
 		 * Filter the settings for a particular widget instance.
 		 *
