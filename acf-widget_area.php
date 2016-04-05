@@ -41,7 +41,7 @@ class ACF_Widget_Area_Sidebar {
 	}
 
 	function acf_widget_area_filter_widgets( $widgets ) {
-		global $wp_widget_factory, $wp_registered_widgets;
+		global $wp_widget_factory, $wp_registered_widgets, $wp_registered_sidebars;
 
 		if ( is_single() || is_page() ) {
 			$object_id = get_queried_object_id();
@@ -51,7 +51,7 @@ class ACF_Widget_Area_Sidebar {
 
 			$customized_sidebars = get_post_meta( $object_id, 'acf_widget_area_is_customized', true );
 			if ( !empty( $customized_sidebars ) ) {
-				foreach ( array_keys( $widgets ) as $sidebar_id ) {
+				foreach ( array_keys( $wp_registered_sidebars ) as $sidebar_id ) {
 					if ( isset( $customized_sidebars[$sidebar_id] ) ) {
 						foreach ( $customized_sidebars[$sidebar_id] as $field_key => $customized ) {
 							$post_id = false;
