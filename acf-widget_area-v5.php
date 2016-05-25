@@ -736,8 +736,10 @@ if ( !class_exists( 'acf_field_widget_area' ) ) :
 
 					// extract value
 					$sub_value = acf_extract_var( $value['rows'][$i], $sub_field['key'] );
-
-
+					
+					//Added in 1.0.1 to prevent ACF cache from loading the wrong value. 
+					$sub_field['name'] = "{$field['name']}_{$i}_{$sub_field['name']}";
+					
 					// format value
 					$sub_value = acf_format_value( $sub_value, $post_id, $sub_field );
 

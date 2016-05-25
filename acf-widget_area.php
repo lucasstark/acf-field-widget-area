@@ -4,7 +4,7 @@
   Plugin Name: Advanced Custom Fields: Widget Area
   Plugin URI: https://github.com/lucasstark/acf-field-widget-area
   Description: A field type which allows users to add widgets to a sidebar on posts and pages.  The widgets added will override the default sidebar.
-  Version: 1.0.0
+  Version: 1.0.1
   Author: Lucas Stark
   Author URI: https://github.com/lucasstark/
   License: GPLv2 or later
