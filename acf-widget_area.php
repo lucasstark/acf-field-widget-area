@@ -76,19 +76,23 @@ class ACF_Widget_Area_Sidebar {
 
 								if ( $value && isset( $value['rows'] ) ) {
 									foreach ( $value['rows'] as $layout_row ) {
-										$the_widget_id = array_values( $layout_row )[1]['widget_id'];
-										$the_widget_class = array_values( $layout_row )[1]['the_widget'];
-										$instance = array_values( $layout_row )[1]['instance'];
-
-										$this->_page_widgets[$object_id] = $layout_row;
-
-										if ( !empty( $wp_widget_factory->widgets[$the_widget_class] ) ) {
-											$widget = $wp_widget_factory->widgets[$the_widget_class];
-											$widgets[$sidebar_id][] = $the_widget_id;
-											wp_register_sidebar_widget( $the_widget_id, $widget->name, array($this, 'display_callback'), $widget->widget_options, array('instance' => $instance, 'widget' => $widget) );
+										$layout_values = array_values( $layout_row );
+										if (isset($layout_values[1]) && is_array($layout_values[1])) {
+											$the_widget_id = $layout_values[1]['widget_id'] ?? null;
+											$the_widget_class = $layout_values[1]['the_widget'] ?? null;
+											$instance = $layout_values[1]['instance'] ?? null;
+								
+											if ($the_widget_id && $the_widget_class && $instance) {
+												$this->_page_widgets[$object_id] = $layout_row;
+												if ( !empty( $wp_widget_factory->widgets[$the_widget_class] ) ) {
+													$widget = $wp_widget_factory->widgets[$the_widget_class];
+													$widgets[$sidebar_id][] = $the_widget_id;
+													wp_register_sidebar_widget( $the_widget_id, $widget->name, array($this, 'display_callback'), $widget->widget_options, array('instance' => $instance, 'widget' => $widget) );
+												}
+											}
 										}
 									}
-								}
+								}								
 							}
 						}
 					}
